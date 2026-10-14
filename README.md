@@ -51,7 +51,7 @@ Then enable the service:
 
     # Admin panel password, kept out of the Nix store.
     adminPasswordFile = config.sops.secrets.vproxy-admin.path;
-    secretInstallService = "sops-install-secrets.service";
+    secretInstallService = "sops-nix.service";
 
     config = {
       max_retries = 3;
