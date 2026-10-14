@@ -252,7 +252,7 @@ in {
       lib.mkIf injectPassword {
         description = "Substitute admin password into the config file";
 
-        requires = ["systemd-tmpfiles-setup.service"] ++ secretUnits;
+        requires = ["systemd-tmpfiles-setup.service"];
         after = ["systemd-tmpfiles-setup.service"] ++ secretUnits;
         path = [pkgs.jq];
         script = ''

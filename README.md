@@ -103,7 +103,7 @@ This replaces `config.json` and then re-injects the admin password. vertex-proxy
 Anything in `services.vproxy.config` ends up in the world-readable Nix store, so do not put `admin_password` there. Instead:
 
 - Set `adminPasswordFile` to the path of a file outside the store. A trailing newline is stripped.
-- Set `secretInstallService` to the systemd unit that puts that file in place, such as `sops-install-secrets.service` or `agenix.service`, so the injection waits for it. Leave it as `null` if you don't use a secret manager. Use `""` if the file is already present at boot.
+- Set `secretInstallService` to the systemd unit that puts that file in place, such as `sops-nix.service` or `agenix.service`, so the injection waits for it. Leave it as `null` if you don't use a secret manager. Use `""` if the file is already present at boot.
 
 The password is injected only if `config.json` does not already contain an `admin_password` key. A password changed not using this method is therefore kept until you run `vproxy-apply-config`.
 
