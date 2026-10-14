@@ -6,12 +6,14 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
 	"strings"
 	"unicode"
 )
 
 func main() {
-	resp, err := http.Get("https://raw.githubusercontent.com/DeconstructedCube/APS2api/refs/tags/v1.2.0/cmd/vproxy/rules.txt")
+	hash := os.Args[1]
+	resp, err := http.Get(fmt.Sprintf("https://github.com/DeconstructedCube/APS2api/blob/%s/cmd/vproxy/rules.txt", hash))
 	if err != nil {
 		panic(err)
 	}

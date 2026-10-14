@@ -2,7 +2,7 @@
 
 A Nix flake that packages [APS2api](https://github.com/DeconstructedCube/APS2api) (`vertex-proxy`, an "Agent Platform Studio to API" proxy for Vertex AI) and ships a NixOS module to run it as a hardened systemd service.
 
-- Package: APS2api **v1.2.0**, built from `cmd/vproxy`, installed as `bin/vertex-proxy`
+- Package: APS2api **11b1f3b**, built from `cmd/vproxy`, installed as `bin/vertex-proxy`
 - Platforms: `x86_64-linux`, `aarch64-linux`
 - License of the packaged software: [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0/). Commercial use is not permitted.
 
@@ -109,12 +109,12 @@ The password is injected only if `config.json` does not already contain an `admi
 
 ### Rules agreement
 
-On first start, upstream vertex-proxy requires you to accept its [rules](https://raw.githubusercontent.com/DeconstructedCube/APS2api/refs/tags/v1.2.0/cmd/vproxy/rules.txt) interactively. It stores the acceptance in `config/state/.rules_agreed` as a hash of the rules text. **Setting `autoAgree = true` means you have read and agreed to those rules.**
+On first start, upstream vertex-proxy requires you to accept its [rules](https://raw.githubusercontent.com/DeconstructedCube/APS2api/11b1f3b/cmd/vproxy/rules.txt) interactively. It stores the acceptance in `config/state/.rules_agreed` as a hash of the rules text. **Setting `autoAgree = true` means you have read and agreed to those rules.**
 
-The hash is pre-computed for v1.2.0. `calcHash.go` reproduces it. Runs it to recalculate hash:
+The hash is pre-computed for 11b1f3b. `calcHash.go` reproduces it. Runs it to recalculate hash:
 
 ```sh
-go run calcHash.go   # 36800adeec862126
+go run calcHash.go <commitHash>
 ```
 
 If the package version ever differs from 1.2.0, the module shows a warning because the rules may have changed. Read the new rules, update the URL in `calcHash.go`, and update `currentHash`.

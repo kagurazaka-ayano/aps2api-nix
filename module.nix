@@ -23,21 +23,17 @@ in {
       type = bool;
       default = false;
       description = ''
-        Automatically agree to the rules of vertex proxy by writing the pre-calculated hash to the config/state/.rules_agreed file. Based on release tag v1.2.0
-
-        Read them by running the program once or see the rules at https://raw.githubusercontent.com/DeconstructedCube/APS2api/refs/tags/v1.2.0/cmd/vproxy/rules.txt
+        Automatically agree to the rules of vertex proxy by writing the pre-calculated hash to the config/state/.rules_agreed file. Based on release tag 11b1f3b
 
         Making this option true implies you have read and agreed to the rules. If you don't agree, leave this option false and do not run vertex proxy.
       '';
     };
     currentHash = lib.mkOption {
       type = str;
-      default = "36800adeec862126";
+      default = "a5cd84fc1ced711e";
       internal = true;
       description = ''
-        The pre-calculated hash of the rules of vertex proxy. Based on release tag v1.2.0
-
-        Read them by running the program once or see the rules at https://raw.githubusercontent.com/DeconstructedCube/APS2api/refs/tags/v1.2.0/cmd/vproxy/rules.txt
+        The pre-calculated hash of the rules of vertex proxy. Based on release tag 11b1f3b
       '';
     };
     adminPasswordFile = lib.mkOption {
@@ -200,9 +196,9 @@ in {
   };
   config = lib.mkIf cfg.enable {
     warnings = (
-      if (cfg.package.version != "1.2.0")
+      if (cfg.package.version != "11b1f3b")
       then [
-        "Package version changed (expecting 1.2.0, found ${cfg.package.version}), agreement might also updated. Please read the new agreement to see changes."
+        "Package version changed (expecting 11b1f3b, found ${cfg.package.version}), agreement might also updated. Please read the new agreement to see changes."
       ]
       else []
     );

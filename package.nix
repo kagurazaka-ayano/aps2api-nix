@@ -6,24 +6,21 @@
 }:
 buildGoModule (finalAttrs: {
   pname = "APS2api";
-  version = "1.2.0";
+  version = "11b1f3b";
 
   src = fetchFromGitHub {
     owner = "DeconstructedCube";
     repo = "APS2api";
-    tag = "v${finalAttrs.version}";
-    hash = "sha256-HLL0O0V+jecgjQ5ePWj5BBIdwau2+QGOAo3iuFCLXN0=";
+    rev = "${finalAttrs.version}";
+    hash = "sha256-3k5MuBwCRe4pn+A0KQSckStw4V1TUq5gNC3G0W41u2k=";
   };
   subPackages = ["cmd/vproxy"];
-  env = {
-    GOFLAGS = "-o=vertex-proxy";
-  };
 
   postInstall = ''
     mv $out/bin/vproxy $out/bin/vertex-proxy
   '';
 
-  vendorHash = "sha256-qwocsXP0OBuDS1MbJ1UnVp1dpJ5m+36fA+gBYsEfed0=";
+  vendorHash = "sha256-8dcoL3trn2exSNHDB2Tc3arAuI2Ub17fx+3bhQMgVh8=";
 
   meta = {
     mainProgram = "vertex-proxy";

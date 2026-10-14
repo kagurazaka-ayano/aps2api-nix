@@ -8,15 +8,16 @@
     nixpkgs,
   }: let
     linuxSystems = ["aarch64-linux" "x86_64-linux"];
-    allSystems = linuxSystems ++ ["aarch64-darwin" "x86_64-darwin"];
+    allSystems = linuxSystems ++ ["aarch64-darwin"];
     forSystems = systems: f: nixpkgs.lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
   in {
-    packages = nixpkgs.lib.recursiveUpdate (forSystems linuxSystems (pkgs: rec {
-      default = pkgs.callPackage ./package.nix {};
-      vertex-proxy = default;
-    })) (forSystems allSystems (pkgs: {
-      docs = import ./docs.nix {inherit pkgs;};
-    }));
+    packages =
+      nixpkgs.lib.recursiveUpdate (forSystems allSystems (pkgs: rec {
+        default = pkgs.callPackage ./package.nix {};
+        vertex-proxy = default;
+      })) (forSystems allSystems (pkgs: {
+        docs = import ./docs.nix {inherit pkgs;};
+      }));
     nixosModules = {
       default = import ./module.nix;
     };
