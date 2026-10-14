@@ -4,414 +4,578 @@
 
 ## services\.vproxy\.enable
 
+
+
 Whether to enable vproxy\.
 
-_Type:_
+
+
+*Type:*
 boolean
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 false
 ```
 
-_Example:_
+
+
+*Example:*
 
 ```nix
 true
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.package
 
+
+
 The vertex proxy package to use\.
 
-_Type:_
+
+
+*Type:*
 package
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 pkgs.callPackage ./package.nix { }
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.adminPasswordFile
 
 Password file to admin panel
 
-_Type:_
+
+
+*Type:*
 null or absolute path not in the Nix store
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 null
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.autoAgree
 
-Automatically agree to the rules of vertex proxy by writing the pre-calculated hash to the config/state/\.rules_agreed file\. Based on release tag v1\.2\.0
 
-Read them by running the program once or see the rules at https://raw\.githubusercontent\.com/DeconstructedCube/APS2api/refs/tags/v1\.2\.0/cmd/vproxy/rules\.txt
+
+Automatically agree to the rules of vertex proxy by writing the pre-calculated hash to the config/state/\.rules_agreed file\. Based on 11b1f3b
 
 Making this option true implies you have read and agreed to the rules\. If you don’t agree, leave this option false and do not run vertex proxy\.
 
-_Type:_
+
+
+*Type:*
 boolean
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 false
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config
 
+
+
 Configuration written to vertex proxy’s config\.json\.
 
-_Type:_
+
+
+*Type:*
 open submodule of (JSON value)
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 { }
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.aggregate_stream
 
+
+
 Combine streamed upstream chunks into one response\.
 
-_Type:_
+
+
+*Type:*
 boolean
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 false
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.default_image_size
 
+
+
 Image size used when the request doesn’t set one\.
 
-_Type:_
+
+
+*Type:*
 string
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 "1K"
 ```
 
-_Example:_
+
+
+*Example:*
 
 ```nix
 "2K"
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.default_response_modalities
 
+
+
 Response modalities used when the request doesn’t set them\.
 
-_Type:_
+
+
+*Type:*
 string
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 "图文"
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.drop_max_tokens
 
-Remove `max_tokens` from upstream requests\.
 
-_Type:_
+
+Remove ` max_tokens ` from upstream requests\.
+
+
+
+*Type:*
 boolean
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 false
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.entry_proxy_probe_auto_disable_enabled
 
+
+
 Disable an entry proxy automatically after repeated failed health checks\.
 
-_Type:_
+
+
+*Type:*
 boolean
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 false
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.entry_proxy_probe_auto_disable_failures
 
+
+
 Consecutive failed health checks before an entry proxy is disabled\.
 
-_Type:_
+
+
+*Type:*
 positive integer, meaning >0
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 10
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.entry_proxy_probe_cooldown_seconds
 
+
+
 Cooldown in seconds after an entry proxy health check fails\.
 
-_Type:_
+
+
+*Type:*
 unsigned integer, meaning >=0
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 60
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.entry_proxy_probe_enabled
 
+
+
 Check entry proxies’ health at regular intervals\.
 
-_Type:_
+
+
+*Type:*
 boolean
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 false
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.entry_proxy_probe_interval_seconds
 
+
+
 Seconds between entry proxy health checks\.
 
-_Type:_
+
+
+*Type:*
 positive integer, meaning >0
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 300
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.fake_stream_enabled
 
+
+
 Simulate streaming for clients when the upstream response isn’t streamed\.
 
-_Type:_
+
+
+*Type:*
 boolean
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 true
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.max_n
 
-Maximum value accepted for `n` (number of generations) in one request\.
 
-_Type:_
+
+Maximum value accepted for ` n ` (number of generations) in one request\.
+
+
+
+*Type:*
 positive integer, meaning >0
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 8
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.max_retries
 
+
+
 Number of retries for a failed upstream request\.
 
-_Type:_
+
+
+*Type:*
 unsigned integer, meaning >=0
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 1
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.parallel_pool_delay_dynamic
 
+
+
 Adjust the parallel pool delay automatically instead of using a fixed value\.
 
-_Type:_
+
+
+*Type:*
 boolean
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 false
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.parallel_pool_delay_ms
 
+
+
 Delay in milliseconds between dispatches in the parallel pool\.
 
-_Type:_
+
+
+*Type:*
 unsigned integer, meaning >=0
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 2500
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.parallel_pool_enabled
 
+
+
 Send requests to upstream nodes in parallel\.
 
-_Type:_
+
+
+*Type:*
 boolean
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 true
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.parallel_pool_size
 
+
+
 Maximum number of concurrent requests in the parallel pool\.
 
-_Type:_
+
+
+*Type:*
 positive integer, meaning >0
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 15
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.proxy_url
 
+
+
 Proxy URL for upstream requests\. Empty means no proxy\.
 
-_Type:_
+
+
+*Type:*
 string
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 ""
 ```
 
-_Example:_
+
+
+*Example:*
 
 ```nix
 "http://127.0.0.1:7890"
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.proxy_url_candidates
 
+
+
 Candidate proxy URLs to choose from\.
 
-_Type:_
+
+
+*Type:*
 list of string
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 [ ]
 ```
 
-_Example:_
+
+
+*Example:*
 
 ```nix
 [
@@ -420,93 +584,129 @@ _Example:_
 ]
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.sticky_node_priority
 
+
+
 Keep using the last successful node before trying others\.
 
-_Type:_
+
+
+*Type:*
 boolean
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 false
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.config\.telemetry_enabled
 
+
+
 Turn on telemetry reporting\.
 
-_Type:_
+
+
+*Type:*
 boolean
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 false
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.group
 
+
+
 Group to run vertex proxy as\.
 
-_Type:_
+
+
+*Type:*
 string
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 "vproxy"
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.secretInstallService
+
+
 
 The service that installs the adminPasswordFile into its place\. If you are using password managers like sops-nix or agenix or installing a out-of-store file as password\.
 
 If you don’t know what this is, leave this unspecified\. If you are using an out-of-store password file, make this an empty string\.
 
-_Type:_
+
+
+*Type:*
 null or string
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 null
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+
 
 ## services\.vproxy\.user
 
+
+
 User to run vertex proxy as\.
 
-_Type:_
+
+
+*Type:*
 string
 
-_Default:_
+
+
+*Default:*
 
 ```nix
 "vproxy"
 ```
 
-_Declared by:_
+*Declared by:*
+ - [module\.nix](module.nix)
 
-- [module\.nix](module.nix)
+

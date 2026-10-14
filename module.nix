@@ -7,6 +7,7 @@
   cfg = config.services.vproxy;
   home = "/var/lib/vproxy";
   jsonFormat = pkgs.formats.json {};
+  baseVersion = (pkgs.callPackage ./package.nix {}).version;
   inherit (lib) mkOption types;
   secretUnits = lib.optional (cfg.secretInstallService != null && cfg.secretInstallService != "") cfg.secretInstallService;
   injectPassword = cfg.adminPasswordFile != null;
@@ -23,17 +24,17 @@ in {
       type = bool;
       default = false;
       description = ''
-        Automatically agree to the rules of vertex proxy by writing the pre-calculated hash to the config/state/.rules_agreed file. Based on release tag 11b1f3b
+        Automatically agree to the rules of vertex proxy by writing the pre-calculated hash to the config/state/.rules_agreed file. Based on ${baseVersion}
 
         Making this option true implies you have read and agreed to the rules. If you don't agree, leave this option false and do not run vertex proxy.
       '';
     };
     currentHash = lib.mkOption {
       type = str;
-      default = "a5cd84fc1ced711e";
+      default = "36800adeec862126";
       internal = true;
       description = ''
-        The pre-calculated hash of the rules of vertex proxy. Based on release tag 11b1f3b
+        The pre-calculated hash of the rules of vertex proxy. Based on release tag ${baseVersion}
       '';
     };
     adminPasswordFile = lib.mkOption {
@@ -196,9 +197,9 @@ in {
   };
   config = lib.mkIf cfg.enable {
     warnings = (
-      if (cfg.package.version != "11b1f3b")
+      if (cfg.package.version != baseVersion)
       then [
-        "Package version changed (expecting 11b1f3b, found ${cfg.package.version}), agreement might also updated. Please read the new agreement to see changes."
+        "Package version changed (expecting ${baseVersion}, found ${cfg.package.version}), agreement might also updated. Please read the new agreement to see changes."
       ]
       else []
     );

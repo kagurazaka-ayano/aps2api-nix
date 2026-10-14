@@ -114,10 +114,10 @@ On first start, upstream vertex-proxy requires you to accept its [rules](https:/
 The hash is pre-computed for 11b1f3b. `calcHash.go` reproduces it. Runs it to recalculate hash:
 
 ```sh
-go run calcHash.go <commitHash>
+go run calcHash.go <fileUrl>
 ```
 
-If the package version ever differs from 1.2.0, the module shows a warning because the rules may have changed. Read the new rules, update the URL in `calcHash.go`, and update `currentHash`.
+If the package version ever differs from the version of the package in this repo, the module shows a warning because the rules may have changed. Read the new rules, update the URL in `calcHash.go`, and update `currentHash`.
 
 ## Development
 

@@ -12,8 +12,8 @@ import (
 )
 
 func main() {
-	hash := os.Args[1]
-	resp, err := http.Get(fmt.Sprintf("https://github.com/DeconstructedCube/APS2api/blob/%s/cmd/vproxy/rules.txt", hash))
+	url := os.Args[1]
+	resp, err := http.Get(url)
 	if err != nil {
 		panic(err)
 	}
